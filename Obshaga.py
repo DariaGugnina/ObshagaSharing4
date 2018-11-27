@@ -6,6 +6,10 @@ import db
 import db2
 app = flask.Flask(__name__)
 
+import sqlite3
+conn = sqlite3.connect('app.db')
+
+
 @app.route("/")
 def enter():
   return render_template('index.html')
@@ -62,11 +66,30 @@ def userpage(username):
 
 @app.route('/search')
 def search_for_person():
-    q = flask.request.args.get('query')
-    a = flask.request.args.get('query')
-    users = db2.get_users_by_name(q)
-    requests = db.get_requests_by_name(a)
-    return render_template('search_results.html', q=q, users=users, a=a, requests=requests)
+    conn = sqlite3.connect('app.db')
+    c = conn.cursor()
 
+    q = flask.request.args.get('query')
+
+    requests = db.get_requests_by_name(q)
+
+    c.execute("SELECT * FROM request WHERE name LIKE '%s'" % q)
+    users = list(c.fetchall())
+
+    c.close()
+    return render_template('search_results.html', q=q, requests=requests)
+
+@app.route('/search_page1')
+def search1():
+    conn = sqlite3.connect('app.db')
+    c = conn.cursor()
+
+    q = ""
+
+    c.execute("SELECT * FROM staff WHERE name LIKE '%s'" % q)
+    users = list(c.fetchall())
+
+    c.close()
+    return render_template('page1.html', users=users)
 
 app.run()
