@@ -3,7 +3,7 @@ _requests = {
         'name': 'pan for pancakes',
         'condition': 'clean, non-stick',
         'time': '2 weeks',
-        'benefits': '10 pancakes',
+        'benefits': '10 pancakes'
     },
     'hair dryer': {
         'name': 'hair dryer',

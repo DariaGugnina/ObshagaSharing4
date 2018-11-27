@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>our application</title>
+</head>
+<body>
+   <div class="starter-template">
+        <h1>Search for users</h1>
+        <p class="lead">Введи интересующую тебя имя или фамилию.<br> :)</p>
+   </div>
+
+
+
+    <div class="container">
+
+        <form class="form" method="get" action="/search">
+            <input type="search" name="query" class="form-control">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% for user in users %}
+            {{user[1]}}
+        {% endfor %}
+
+    <div>
+</body>
+</html>
