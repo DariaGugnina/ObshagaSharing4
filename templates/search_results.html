@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results for {{q}}</title>
+</head>
+</body>
+    </div class="container">
+        You search for {{q}}
+        <br>
+        {% for user in users %}
+            <div class="card">
+             <div class="card-body">
+                {{user.name}}
+             </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div class="container">
+        You search for {{a}}
+        <br>
+        {% for request in requests %}
+            <div class="card">
+             <div class="card-body">
+                {{request.name}}
+             </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
